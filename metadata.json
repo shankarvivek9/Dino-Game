@@ -1,0 +1,6 @@
+{
+  "name": "Dinosaur Game: Neon & Vibrant",
+  "description": "An interactive, colorful, and highly vibrant dinosaur jumping game featuring custom characters, progressive levels, special power-ups, retro audio synthesis, and a custom rule editor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
