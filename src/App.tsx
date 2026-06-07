@@ -12,6 +12,7 @@ import { RuleCustomizer } from './components/RuleCustomizer';
 import { GameCanvas } from './components/GameCanvas';
 import { Leaderboard } from './components/Leaderboard';
 import { InfoPages } from './components/InfoPages';
+import { HomepageRichContent } from './components/HomepageRichContent';
 import { audio } from './lib/AudioEngine';
 import { LucideGamepad2, Sliders, Trophy, ChevronRight, User, ShieldCheck, RefreshCw, Zap, Moon, Play, AlertCircle } from 'lucide-react';
 
@@ -238,6 +239,9 @@ export default function App() {
                   <Leaderboard entries={highScores} onClear={handleClearScores} />
                 </div>
               </div>
+
+              {/* Rich SEO & AdSense Compliant Interactive Panel */}
+              <HomepageRichContent />
             </motion.div>
           )}
 
