@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neondinodash.vercel.app/sitemap.xml
+Sitemap: https://dino-game-bice-three.vercel.app/sitemap.xml
