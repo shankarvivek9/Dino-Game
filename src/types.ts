@@ -36,7 +36,7 @@ export interface DinoCharacter {
   icon: string;
 }
 
-export type GameState = 'MENU' | 'CHAR_SELECT' | 'PLAYING' | 'PAUSED' | 'GAME_OVER' | 'DINO_RULES';
+export type GameState = 'MENU' | 'CHAR_SELECT' | 'PLAYING' | 'PAUSED' | 'GAME_OVER' | 'DINO_RULES' | 'ABOUT' | 'CONTACT' | 'PRIVACY' | 'TERMS';
 
 export type ObstacleType = 'cactus_small' | 'cactus_large' | 'pterodactyl' | 'meteor' | 'lava_drip' | 'lollipop';
 

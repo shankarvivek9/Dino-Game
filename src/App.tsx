@@ -11,6 +11,7 @@ import { DinosaurSelector } from './components/DinosaurSelector';
 import { RuleCustomizer } from './components/RuleCustomizer';
 import { GameCanvas } from './components/GameCanvas';
 import { Leaderboard } from './components/Leaderboard';
+import { InfoPages } from './components/InfoPages';
 import { audio } from './lib/AudioEngine';
 import { LucideGamepad2, Sliders, Trophy, ChevronRight, User, ShieldCheck, RefreshCw, Zap, Moon, Play, AlertCircle } from 'lucide-react';
 
@@ -198,6 +199,37 @@ export default function App() {
                         <Sliders className="w-4 h-4 text-white" /> Customize Rules
                       </button>
                     </div>
+
+                    {/* Homepage Navigation Menu - AdSense friendly utility row */}
+                    <div className="flex items-center justify-around gap-1.5 px-1 py-1.5 bg-indigo-50/40 rounded-2xl border border-indigo-100 text-[10px] sm:text-[11px] font-black text-indigo-500 uppercase tracking-wide">
+                      <button 
+                        onClick={() => { audio.playPowerUp(); setGameState('ABOUT'); }}
+                        className="py-1 px-2 hover:text-indigo-950 hover:bg-white rounded-xl transition-all cursor-pointer"
+                      >
+                        About Us
+                      </button>
+                      <span className="text-indigo-100">|</span>
+                      <button 
+                        onClick={() => { audio.playPowerUp(); setGameState('CONTACT'); }}
+                        className="py-1 px-2 hover:text-indigo-950 hover:bg-white rounded-xl transition-all cursor-pointer"
+                      >
+                        Contact
+                      </button>
+                      <span className="text-indigo-100">|</span>
+                      <button 
+                        onClick={() => { audio.playPowerUp(); setGameState('PRIVACY'); }}
+                        className="py-1 px-2 hover:text-indigo-950 hover:bg-white rounded-xl transition-all cursor-pointer font-sans"
+                      >
+                        Privacy Policy
+                      </button>
+                      <span className="text-indigo-100">|</span>
+                      <button 
+                        onClick={() => { audio.playPowerUp(); setGameState('TERMS'); }}
+                        className="py-1 px-2 hover:text-indigo-950 hover:bg-white rounded-xl transition-all cursor-pointer"
+                      >
+                        Terms
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -363,11 +395,41 @@ export default function App() {
               </div>
             </motion.div>
           )}
+
+          {(gameState === 'ABOUT' || gameState === 'CONTACT' || gameState === 'PRIVACY' || gameState === 'TERMS') && (
+            <motion.div
+              key="info_pages"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.22 }}
+              className="w-full flex justify-center"
+            >
+              <InfoPages
+                currentPage={gameState}
+                onNavigate={(state) => {
+                  audio.playPowerUp();
+                  setGameState(state);
+                }}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {/* Outer bottom copyright line */}
-        <div className="text-center text-[10px] text-white/50 font-mono tracking-widest uppercase mt-2" id="credit-line">
-          Neon Dino Dash — Compiles 100% Client-Side.
+        {/* Outer bottom footer with required AdSense navigation links */}
+        <div className="flex flex-col gap-2 items-center text-center mt-4 border-t border-white/5 pt-4" id="applet-footer">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[10px] text-white/70 font-semibold tracking-wider uppercase font-mono">
+            <button onClick={() => { audio.playPowerUp(); setGameState('ABOUT'); }} className="hover:text-yellow-400 hover:underline cursor-pointer transition">About Us</button>
+            <span className="text-white/20">•</span>
+            <button onClick={() => { audio.playPowerUp(); setGameState('CONTACT'); }} className="hover:text-yellow-400 hover:underline cursor-pointer transition">Contact Us</button>
+            <span className="text-white/20">•</span>
+            <button onClick={() => { audio.playPowerUp(); setGameState('PRIVACY'); }} className="hover:text-yellow-400 hover:underline cursor-pointer transition">Privacy Policy</button>
+            <span className="text-white/20">•</span>
+            <button onClick={() => { audio.playPowerUp(); setGameState('TERMS'); }} className="hover:text-yellow-400 hover:underline cursor-pointer transition">Terms & Conditions</button>
+          </div>
+          <div className="text-[9px] text-white/40 font-mono tracking-widest uppercase">
+            © 2026 Neon Dino Dash — Free to Play Web Arcade. Powered by custom Client-Side Synthesis keys.
+          </div>
         </div>
       </div>
     </div>
